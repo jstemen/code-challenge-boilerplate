@@ -35,25 +35,24 @@ class Runner {
         int n = sc.nextInt();
         int reqSweet = sc.nextInt();
         PriorityQueue<Integer> pq = new PriorityQueue();
-        for (int i = 0; i < n - 1; i++) {
+        for (int i = 0; i < n; i++) {
             Integer el = sc.nextInt();
             pq.add(el);
         }
         int steps = 0;
         boolean successful = false;
-        while (!pq.isEmpty()) {
+        while (pq.size() >= 2) {
             if (pq.peek() >= reqSweet) {
-                successful = true;
                 break;
             } else {
                 int min = pq.poll();
-                if (pq.isEmpty()) {
-                    break;
-                }
                 int secMin = pq.poll();
                 pq.add(min + 2 * secMin);
                 steps++;
             }
+        }
+        if (pq.size() > 0 && pq.peek() >= reqSweet) {
+            successful = true;
         }
         if (successful) {
             inAndOut.getStdOut().println(steps);
