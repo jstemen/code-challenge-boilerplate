@@ -20,15 +20,15 @@ public class AppTest {
     }
     @Test
     public void testThatNoSolutionCaseWorks2() {
-        String input = "6 12\n1 2 3 9 10 12";
+        String input = "6 90\n1 2 3 9 10 12";
         FakeInAndOut fakeInAndOut = process(input);
         assertThat(fakeInAndOut.getOut(), equalTo("-1\n"));
     }
     @Test
     public void testThatSolutionCaseWorks() {
-        String input = "6 10\n1 2 3 9 10 12";
+        String input = "6 65\n1 2 3 9 10 12";
         FakeInAndOut fakeInAndOut = process(input);
-        assertThat(fakeInAndOut.getOut(), equalTo("-1\n"));
+        assertThat(fakeInAndOut.getOut(), equalTo("4\n"));
     }
 
     private FakeInAndOut process(String input) {
