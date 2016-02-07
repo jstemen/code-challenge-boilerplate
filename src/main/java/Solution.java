@@ -1,4 +1,6 @@
-
+/**
+ * Once you've tested your code to your heart's desire, just copy and paste this whole file into Hacker Rank and submit it.
+ */
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.PriorityQueue;
@@ -28,6 +30,9 @@ class RealSystem implements InAndOut {
     }
 }
 
+/**
+ * Class to house problem solving logic
+ */
 class Runner {
     private InAndOut inAndOut;
 
@@ -35,6 +40,7 @@ class Runner {
         this.inAndOut = inAndOut;
     }
 
+    //Change logic here to solve problem...
     public void run() {
         Scanner sc = new Scanner(inAndOut.getStdIn());
         int n = sc.nextInt();
