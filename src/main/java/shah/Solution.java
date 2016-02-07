@@ -32,8 +32,10 @@ class Runner{
            pq.add(el);
        }
        int steps =0;
+       boolean successful = false;
        while(steps < pq.size()){
            if(pq.peek() >= reqSweet){
+               successful = true;
                break;
            }else{
                int min = pq.poll();
@@ -42,10 +44,10 @@ class Runner{
                steps++;
            }
        }
-       if(steps == pq.size()){
-           inAndOut.getStdOut().println(-1);
-       }else{
+       if(successful){
            inAndOut.getStdOut().println(steps);
+       }else{
+           inAndOut.getStdOut().println(-1);
        }
    }
 }
