@@ -48,7 +48,7 @@ public class AppTest {
     @Test
     public void testThatShortCase2Works() {
         FakeInAndOut fakeInAndOut = process("1 3","5");
-        assertThat(fakeInAndOut.getOut(), equalTo("0"));
+        assertThat(fakeInAndOut.getOut(), equalTo("0\n"));
     }
 
     /**
