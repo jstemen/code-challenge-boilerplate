@@ -1,4 +1,3 @@
-package shah;
 
 import org.junit.Test;
 
