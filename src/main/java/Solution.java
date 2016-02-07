@@ -4,6 +4,9 @@ import java.io.PrintStream;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
+/**
+ * An interface that supplies Standard In and Standard Out
+ */
 interface InAndOut {
 
     public InputStream getStdIn();
@@ -12,6 +15,9 @@ interface InAndOut {
 
 }
 
+/**
+ * Wrapper implantation that just passes StdIn and StdOut to caller
+ */
 class RealSystem implements InAndOut {
     public InputStream getStdIn() {
         return System.in;
@@ -61,6 +67,9 @@ class Runner {
     }
 }
 
+/**
+ * When we execute in the Hacker Rank environment, we want to use the real Stdin and Stdout
+ */
 public class Solution {
     public static void main(String[] args) {
         InAndOut real = new RealSystem();

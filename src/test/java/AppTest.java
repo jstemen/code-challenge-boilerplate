@@ -7,67 +7,64 @@ import static org.hamcrest.Matchers.equalTo;
 public class AppTest {
     @Test
     public void testThatDefaultCaseWorks() {
-        String input = "6 7\n1 2 3 9 10 12";
-        FakeInAndOut fakeInAndOut = process(input);
+        FakeInAndOut fakeInAndOut = process("6 7","1 2 3 9 10 12");
         assertThat(fakeInAndOut.getOut(), equalTo("2\n"));
     }
     @Test
     public void testThatTrivalCaseWorks() {
-        String input = "4 7\n10 10 22 193";
-        FakeInAndOut fakeInAndOut = process(input);
+        FakeInAndOut fakeInAndOut = process("4 7","10 10 22 193");
         assertThat(fakeInAndOut.getOut(), equalTo("0\n"));
     }
     @Test
     public void testThatNoSolutionCaseWorks() {
-        String input = "6 2000\n1 2 3 9 10 12";
-        FakeInAndOut fakeInAndOut = process(input);
+        FakeInAndOut fakeInAndOut = process("6 2000","1 2 3 9 10 12");
         assertThat(fakeInAndOut.getOut(), equalTo("-1\n"));
     }
     @Test
     public void testThatSolutionCaseWorks2() {
-        String input = "6 105\n1 2 3 9 10 12";
+        FakeInAndOut fakeInAndOut = process("6 105","1 2 3 9 10 12");
         // 3 5 9 10 12
         //  9 10 12 13
         // 12 13 29
         // 29 38
         // 105
-
-        FakeInAndOut fakeInAndOut = process(input);
         assertThat(fakeInAndOut.getOut(), equalTo("5\n"));
     }
     @Test
     public void testThatNoSolutionCaseWorks2() {
-        String input = "6 106\n1 2 3 9 10 12";
-        // 3 5 9 10 12
-        //  9 10 12 13
-        // 12 13 29
-        // 29 38
-        // 105
-
-        FakeInAndOut fakeInAndOut = process(input);
+        FakeInAndOut fakeInAndOut = process("6 106","1 2 3 9 10 12");
         assertThat(fakeInAndOut.getOut(), equalTo("-1\n"));
     }
     @Test
     public void testThatSolutionCaseWorks() {
-        String input = "6 65\n1 2 3 9 10 12";
-        FakeInAndOut fakeInAndOut = process(input);
+        FakeInAndOut fakeInAndOut = process("6 65","1 2 3 9 10 12");
         assertThat(fakeInAndOut.getOut(), equalTo("5\n"));
     }
     @Test
     public void testThatShortCaseWorks() {
-        String input = "1 65\n3";
-        FakeInAndOut fakeInAndOut = process(input);
+        FakeInAndOut fakeInAndOut = process("1 65","3");
         assertThat(fakeInAndOut.getOut(), equalTo("-1\n"));
     }
     @Test
     public void testThatShortCase2Works() {
-        String input = "1 3\n5";
-        FakeInAndOut fakeInAndOut = process(input);
-        assertThat(fakeInAndOut.getOut(), equalTo("0\n"));
+        FakeInAndOut fakeInAndOut = process("1 3","5");
+        assertThat(fakeInAndOut.getOut(), equalTo("0"));
     }
 
-    private FakeInAndOut process(String input) {
-        FakeInAndOut fakeInAndOut = new FakeInAndOut(input);
+    /**
+     * Runs our solver with the specified input and returns the output
+     * @param lines - Strings that is sent to solver over StdIn ( joined with newline)
+     * @return - What our solver prints to StdOut
+     */
+    private FakeInAndOut process(String... lines) {
+
+        StringBuilder sb = new StringBuilder();
+        for(String line : lines){
+           sb.append(line);
+           sb.append("\n");
+        }
+
+        FakeInAndOut fakeInAndOut = new FakeInAndOut(sb.toString());
         Runner runner = new Runner(fakeInAndOut);
         runner.run();
         return fakeInAndOut;

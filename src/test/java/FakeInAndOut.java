@@ -3,8 +3,7 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 /**
- * FakeInAndOut
- * 2/6/16
+ * An implementation of InAndOut that lets us send whatever we want to StdIn and check to see what we get on StdOut
  */
 public class FakeInAndOut implements InAndOut {
     private final String fakeInStr;
@@ -26,7 +25,8 @@ public class FakeInAndOut implements InAndOut {
     public PrintStream getStdOut() {
         return printStream;
     }
-    public String getOut(){
+
+    public String getOut() {
         try {
             return baos.toString("UTF8"); // e.g. ISO-8859-1
         } catch (UnsupportedEncodingException e) {
